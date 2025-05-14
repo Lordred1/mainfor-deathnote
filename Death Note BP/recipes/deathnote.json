@@ -1,0 +1,34 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "dn:death_note"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "BBB",
+            "BAB",
+            "BBB"
+        ],
+        "key": {
+            "A": {
+                "item": "minecraft:book"
+            },
+            "B":{
+                "item": "minecraft:wither_rose"
+            }     			
+        },
+		"unlock": [
+          {
+            "item": "minecraft:wither_rose"
+          }
+        ],
+        "result": {
+            "item": "dn:death_note",
+            "count": 1
+        },
+        "priority": 1
+    }
+}

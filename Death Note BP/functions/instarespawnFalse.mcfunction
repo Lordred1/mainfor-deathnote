@@ -1,0 +1,3 @@
+gamerule doimmediaterespawn true
+
+

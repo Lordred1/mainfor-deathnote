@@ -1,0 +1,1 @@
+tellraw @a[tag=Light] {"rawtext":[{"text":"§c10 Seconds"}]}

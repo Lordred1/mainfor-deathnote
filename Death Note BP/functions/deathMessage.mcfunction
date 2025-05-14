@@ -1,0 +1,1 @@
+w @a[tag=marked] You Are Going To Die

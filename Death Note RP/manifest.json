@@ -1,0 +1,24 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Death Note",
+		"description": "Death Note Resource Pack",
+		"uuid": "0d262b4c-7011-d9e3-dc5a-06435af2f27a",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 16, 0]
+	},
+	"metadata": {
+		"authors": ["Broden Sibbald"],
+		"generated_with": {
+			"blockbench_item_wizard": ["1.2.0"]
+		}
+	},
+	"modules": [
+		{
+			"description": "Death Note",
+			"type": "resources",
+			"uuid": "67c83713-4d24-5ea8-89fe-089302ff23f7",
+			"version": [1, 0, 0]
+		}
+	]
+}

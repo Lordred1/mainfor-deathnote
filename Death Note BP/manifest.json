@@ -1,0 +1,47 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Death Note",
+		"description": "Death Note Behavior Pack",
+		"uuid": "4caf0157-cfa4-f7f4-895a-58760cabdc28",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 20, 0]
+	},
+	"metadata": {
+		"authors": ["Broden Sibbald"],
+		"generated_with": {
+			"blockbench_item_wizard": ["1.2.0"]
+		}
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"version": [1, 0, 0],
+			"uuid": "049f6a96-2790-a428-5405-13b7229b6b1b",
+			"type": "data"
+		}, {
+		"description": "Behavior Pack Script",
+		"type": "script",
+		"language": "javascript",
+		"uuid": "5e26c955-4c84-4987-ab37-0ac518102f2e",
+		"version": [1, 0, 0],
+		"entry": "scripts/index.js",
+		"capabilities": ["script_server"],
+		"permissions": ["all"]
+	  }
+	],
+	"dependencies": [
+		{
+			"uuid": "0d262b4c-7011-d9e3-dc5a-06435af2f27a",
+			"version": [1, 0, 0]
+		},
+		{
+		"module_name": "@minecraft/server",
+		"version": "1.8.0"
+	  },
+	  {
+		"module_name": "@minecraft/server-ui",
+		"version": "1.3.0"
+	  }
+	]
+}
