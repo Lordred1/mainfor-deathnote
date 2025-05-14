@@ -1,4 +1,5 @@
 import { Player, world, system, EquipmentSlot, GameRule } from "@minecraft/server";
+import { ActionFormData, ModalFormData} from "@minecraft/server-ui";
 
 let lastMarkedPlayer = null;
 
@@ -24,43 +25,31 @@ world.beforeEvents.itemUse.subscribe((data) => {
 
 function main(player) {
     console.warn("step 1 done");
-
-    const markedPlayers = [...world.getPlayers({ tags: ["marked"] })];
     const sneak = player.isSneaking;
     const jumping = player.isJumping;
 
-    if (markedPlayers.length > 0) {
-        if (jumping) {
-            player.runCommand("function instarespawnFalse");
-            //player.runCommand("w @a[tag=marked] You Are Going To Die");
-            player.runCommand("function deathMessage")
-            player.runCommand("effect @a[tag=marked] instant_damage 1 1 true");
-            player.runCommand("effect @a[tag=marked] fatal_poison 100 1 true");
-            player.runCommand("schedule delay add backup 10s");
-            player.runCommand("schedule delay add irf 12s");
-        }
 
-        if (sneak) {
-            for (const marked of markedPlayers) {
-                const loc = marked.location;
-                player.dimension.createExplosion(loc, 2, { breaksBlocks: false });
-            }
-            player.runCommand("function instarespawnFalse");
-            player.runCommand("kill @a[tag=marked]");
-            //player.runCommand("w @a[tag=marked] You Were Killed By The Death Note");
-            player.runCommand("function deathMessage")
-            player.runCommand("schedule delay add backup 2s");
-        
+
+    const deathNoteUi = new ActionFormData();
+    deathNoteUi.title("The Death Note")
+    .button("Select A Victim")
+    
+
+    deathNoteUi.show(player).then(r =>{
+        if(r.selection == 0) {dropDownUI(player)}
+    })
+   
+}
+
+function dropDownUI(player){
+    const playerDropDown = new ModalFormData()
+    .textField("PLACE HOLDER LABEL","HUH","")
+
+    playerDropDown.show(player).then(response =>{
+        if(response.canceled){
+        console.warn("menu closed")       
         }
-        if(sneak == false && jumping == false){
-        player.runCommand("schedule delay add instarespawnFalse 40s");
-        player.runCommand("schedule delay add killPlayer2 41s");
-        player.runCommand("schedule delay add killPlayer3 42s");
-        player.runCommand("schedule delay add backup 44s");
-        console.warn("heart attack")
-        }
-        console.warn("D");
-    } else {
-        player.runCommand("w @s No one is marked for death");
-    }
+        const victim = response.formValues[0]
+        console.warn("Victim:  ",victim)
+    })
 }
